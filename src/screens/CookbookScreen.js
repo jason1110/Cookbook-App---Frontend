@@ -8,7 +8,7 @@ export default function NewUserScreen() {
     return (
         <View>
             <Text>
-                Hello
+                CookBook
             </Text>
         </View>
     )

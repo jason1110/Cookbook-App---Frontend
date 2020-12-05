@@ -1,39 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button, Alert, SafeAreaView, FlatList } from 'react-native';
+import React from 'react';
+import { StyleSheet} from 'react-native';
 import 'react-native-gesture-handler'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const recipePuppyURL = 'http://recipepuppy.com/api/'
+library.add(fab, faCheckSquare, faCoffee, faSearch)
+
+import HomeScreen from './src/screens/HomeScreen'
+import SearchScreen from './src/screens/SearchScreen'
+import SearchResultsScreen from './src/screens/SearchResultsScreen'
+import NewUserScreen from './src/screens/NewUserScreen'
+import LoginScreen from './src/screens/LoginScreen'
+
+
+const Stack = createStackNavigator()
 
 export default function App() {
 
-const [recipes, setRecipes] = useState([])
-
-useEffect(() => {
-  fetch(recipePuppyURL)
-  .then(response => response.json())
-  .then(console.log())
-}, [])
-
-const renderItem = ({item}) => {
-  <Item title={item.title} />
-}
-
-
   return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.container}>
-          <Text>CookBook!</Text>
-          <FlatList
-            data={recipes}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-            style={styles.flatList}
-          />  
-        </View>
-      </SafeAreaView>
-    );
-  }
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="SearchResults" component={SearchResultsScreen} />
+        <Stack.Screen name="SignUp" component={NewUserScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
   
   const styles = StyleSheet.create({
     container: {
@@ -41,11 +40,6 @@ const renderItem = ({item}) => {
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
-    },
-    flatList: {
-      color: '#fff'
     }
   });
   
-
-
