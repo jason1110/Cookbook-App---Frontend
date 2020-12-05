@@ -1,3 +1,4 @@
+import '../config/config'
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Alert, } from 'react-native';
 import { SearchBar, Button } from 'react-native-elements'
@@ -8,7 +9,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import SearchResultsScreen from './SearchResultsScreen'
 import SearchResults from '../components/SearchResults'
-
 
 export default function SearchScreen({navigation}) {
 
@@ -27,8 +27,8 @@ export default function SearchScreen({navigation}) {
         fetch(`https://recipe-puppy.p.rapidapi.com/?p=${pageNumber}&i=${search}`, {
             "method": "GET",
             "headers": {
-                "x-rapidapi-key": "05911679f7mshac9281d6ec76c1ap1e246ejsnccbf9e7e5f2f",
-                "x-rapidapi-host": "recipe-puppy.p.rapidapi.com"
+                "x-rapidapi-key": `${rapidAPIKey}`,
+                "x-rapidapi-host": `${rapidAPIHost}`
             }
         })
         .then(response => response.json())
