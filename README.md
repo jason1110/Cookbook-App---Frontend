@@ -18,7 +18,7 @@ Savory Search is a simple phone app that lets a user search for recipes by ingre
 
 ## Demo Video
 
-
+https://www.loom.com/share/946738e0e36f40ae9492a01b644716dc
 
 ## Getting Started
  
