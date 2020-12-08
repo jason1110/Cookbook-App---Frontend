@@ -9,7 +9,7 @@
 * [Features](#features)
 * [Future Features](#future-features)
 * [Technologies](#technologies)
-* [Resources] (#resources)
+* [Resources](#resources)
 * [Contact](#contact)
 
 
