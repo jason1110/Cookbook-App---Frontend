@@ -8,7 +8,8 @@
 * [Getting Started](#getting_started)             
 * [Features](#features)
 * [Future Features](#future-features)
-* [Technologies](#technilogies)
+* [Technologies](#technologies)
+* [Resources] (#resources)
 * [Contact](#contact)
 
 
@@ -74,6 +75,10 @@ in the search results, you can click on a recipe card ot be taken to the recipe 
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "@expo/webpack-config": "^0.12.48"
+    
+## Resources
+
+Recipe search engine powered by [www.recipepuppy.com] (www.recipepuppy.com)
 
 ## Contact
 
