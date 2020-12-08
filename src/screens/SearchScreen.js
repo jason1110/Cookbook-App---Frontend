@@ -1,4 +1,4 @@
-import '../config/config'
+
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Alert, } from 'react-native';
 import { SearchBar, Button } from 'react-native-elements'
@@ -10,38 +10,40 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SearchResultsScreen from './SearchResultsScreen'
 import SearchResults from '../components/SearchResults'
 
-export default function SearchScreen({navigation}) {
+const APIKey = process.env.REACT_APP_API_KEY
 
+export default function SearchScreen({navigation}) {
+    
     const [recipes, setRecipes] = useState([])
     const [pageNumber, setPageNumber] = useState(1)
     const [ingredients, setIngredients] = useState('')
     const [query, setQuery] = useState('')
     const [search, setSearch] = useState('')
-
-
+    
+    
     useEffect(() => {
         if (!search){
             null
         } else {
-
-        fetch(`https://recipe-puppy.p.rapidapi.com/?p=${pageNumber}&i=${search}`, {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-key": `${rapidAPIKey}`,
-                "x-rapidapi-host": `${rapidAPIHost}`
-            }
-        })
-        .then(response => response.json())
-        .then(({results}) => { 
-            results.length === 0
-            ? noResults()
-            : setRecipes(results)
-        })
-        .catch(err => {
-            console.error(err);
-        })};
-    }, [search])
-
+            
+            fetch(`https://recipe-puppy.p.rapidapi.com/?p=${pageNumber}&i=${search}`, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-key": "05911679f7mshac9281d6ec76c1ap1e246ejsnccbf9e7e5f2f",
+                    "x-rapidapi-host": "recipe-puppy.p.rapidapi.com"
+                }
+            })
+            .then(response => response.json())
+            .then(({results}) => { 
+                results.length === 0
+                ? noResults()
+                : setRecipes(results)
+            })
+            .catch(err => {
+                console.error(err);
+            })};
+        }, [search])
+        
     const createResults = () =>  <SearchResultsScreen recipes={recipes}  />
 
     const updateSearch = (ingredients) => {
@@ -61,7 +63,6 @@ export default function SearchScreen({navigation}) {
         return Alert.alert('Uh Oh', 'No results found')
     }
 
-    console.log(search)
     return (
         <>
         {!search

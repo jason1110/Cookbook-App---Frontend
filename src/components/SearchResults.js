@@ -1,27 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, 
         Text, 
-        View, 
-        // Button, 
-        Alert, 
-        TextInput, 
-        ScrollView,  
+        View,  
         Linking,
-        Image, 
-        ActivityIndicator,
-        defaultSource,
-        FlatList,
         SafeAreaView
         } 
         from 'react-native';
-import { SearchBar } from 'react-native-elements'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
-import Constants from 'expo-constants';
-import styled from 'styled-components'
 
 import AddToCookbookButton from './AddToCookbookButton'
-// import Card from '../shared/Card'
 
 export default function searchResults({recipe}) {
 
@@ -32,8 +19,8 @@ export default function searchResults({recipe}) {
     }
 
     return (
-       <SafeAreaView style={styles.container}>
-           <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            <View style={styles.container}>
                     < Card containerStyle={styles.card}>
                         <Card.Image  source={{ uri: hasImage()}} style={styles.image}/>
                         <Card.Title style={styles.title}>{recipe.title}</Card.Title>
@@ -79,5 +66,4 @@ const styles = StyleSheet.create({
         maxHeight: 50,
         fontSize: 20,
     }
-
 })

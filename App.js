@@ -7,6 +7,9 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Font from 'expo-font'
+
 
 library.add(fab, faCheckSquare, faCoffee, faSearch)
 
@@ -15,20 +18,24 @@ import SearchScreen from './src/screens/SearchScreen'
 import SearchResultsScreen from './src/screens/SearchResultsScreen'
 import NewUserScreen from './src/screens/NewUserScreen'
 import LoginScreen from './src/screens/LoginScreen'
+import LandingScreen from './src/screens/LandingScreen'
+import CookbookScreen from './src/screens/CookbookScreen'
+
 
 
 const Stack = createStackNavigator()
 
 export default function App() {
-
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Landing" component={LandingScreen} />
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="SearchResults" component={SearchResultsScreen} />
         <Stack.Screen name="SignUp" component={NewUserScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Cookbook" component={CookbookScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
