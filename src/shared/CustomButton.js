@@ -11,7 +11,7 @@ export default function CustomButton({onPress, title}) {
         style={styles.buttonContainer}
         >
             <LinearGradient
-                colors={['#4c669f', '#3b5998', '#192f6a']}
+                colors={['#7ec4df', '#598b9e', '#20363e']}
                 style={styles.buttonGradientContainer}
             >
                 <Text style={styles.buttonText}>{title}</Text>
@@ -23,22 +23,23 @@ export default function CustomButton({onPress, title}) {
 const styles = StyleSheet.create({
     // ...
     buttonContainer: {
-    elevation: 8,
+    elevation: 0,
     backgroundColor: "transparent",
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12
 },
 buttonGradientContainer:{
-    padding: 15, 
+    padding: 10,
+    margin: 10,
     alignItems: 'center', 
     borderRadius: 5,
 },
 buttonText: {
     fontSize: 18,
-    color: "#fff",
+    color: "#f0f5fc",
     fontWeight: "bold",
     alignSelf: "center",
-    textTransform: "uppercase"
+    textTransform: "uppercase",
 }
 });

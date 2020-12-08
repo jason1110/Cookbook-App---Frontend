@@ -1,22 +1,30 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Linking, SafeAreaView } from 'react-native';
-import { Card } from 'react-native-elements'
+import { StyleSheet, Text, View, Linking, SafeAreaView, TouchableOpacity, FlatList } from 'react-native';
+import { Card, ListItem, Avatar } from 'react-native-elements'
 
 export default function RecipeCard({favorite}) {
+
+    const showIngredients = () =>{
+        return favorite.ingredients
+    }
 
         return(
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>   
-                        < Card containerStyle={styles.card}>
-                            <Card.Image  source={{ uri: favorite.thumbnail}} style={styles.image}/>
-                            <Card.Title style={styles.title}>{favorite.title}</Card.Title>
-                            <Text style={styles.paragraph} >{favorite.ingredients}</Text>
-                            <Text 
-                                style={{color: 'blue', marginBottom: 10}}
-                                onPress={ () => Linking.openURL(favorite.href)}
-                                >Recipe website
-                            </Text>
-                        </Card>  
+                <TouchableOpacity 
+                activeOpacity={0.5}
+                onPress={ () => Linking.openURL(favorite.href)}>
+                    <ListItem
+                        key={favorite.id} 
+                        topDivider
+                        style={styles.card}
+                        >
+                        <Avatar source={{ uri: favorite.thumbnail}} size='large' rounded/>
+                        <ListItem.Content style={styles.content}>
+                            <ListItem.Title style={styles.title}>{favorite.title}</ListItem.Title>
+                        </ListItem.Content>
+                    </ListItem>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
         )
@@ -31,16 +39,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     },   
-    paragraph: {
-        margin: 0,
-        fontSize: 15,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: '#34495e',
-    },
     card: {
-        width: 300,
-        height: 350,
+        flex: 1,
+        alignContent: 'center',
+        width: 400,
+        height: 100,
+        padding: 10,
     },
     image: {
         margin: 0,
@@ -48,7 +52,11 @@ const styles = StyleSheet.create({
     title: {
         marginBottom: 0,
         textAlign: "center",
+        justifyContent: 'center',
         maxHeight: 50,
         fontSize: 20,
+    },
+    content: {
+        flex: 1,
     }
 })

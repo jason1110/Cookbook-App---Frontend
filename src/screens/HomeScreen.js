@@ -1,5 +1,6 @@
+console.disableYellowBox = true;
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button, Alert, SafeAreaView, ImageBackground, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, ImageBackground} from 'react-native';
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -32,9 +33,9 @@ export default function HomeScreen({navigation}) {
                 onPress={()=> navigation.navigate('Search')}
                 />
             
-            <Button
+            <CustomButton
                 style={styles.button}
-                title='Favorites'
+                title='Cookbook'
                 onPress={()=> navigation.navigate('Cookbook')}
                 />
           </View>
@@ -53,12 +54,12 @@ export default function HomeScreen({navigation}) {
       transform: [{
         rotate: '-25deg'
       }],
-      color: '#e1e9f5',
+      color: '#f0f5fc',
       flexWrap: 'wrap',
       paddingVertical: 6,
       paddingHorizontal: 50,
       margin: 50,
-      marginBottom: 100,
+      marginBottom: 70,
       fontFamily: 'Pacifico_400Regular'
     },
     image: {
@@ -68,7 +69,7 @@ export default function HomeScreen({navigation}) {
       backgroundColor: 'rgba(140,171,217,0.7)' 
     },
     button: {
-      backgroundColor: 'transparent'
+
     }
 
   });

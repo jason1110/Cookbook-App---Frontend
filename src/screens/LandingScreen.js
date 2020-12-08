@@ -1,19 +1,26 @@
+console.disableYellowBox = true;
 import React, { useState, useEffect } from 'react'
-import { View, Button} from 'react-native';
+import { View, StyleSheet, Text, ImageBackground} from 'react-native';
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SignUpForm from '../components/SignUpForm';
 import LoginForm from '../components/LoginForm';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import CustomButton from '../shared/CustomButton'
 import HomeScreen from './HomeScreen'
+import * as Font from 'expo-font'
+import { useFonts, Pacifico_400Regular } from '@expo-google-fonts/pacifico'
+import { AppLoading } from 'expo';
 
-const baseURL = 'http://localhost:3000/'
+const baseURL = 'https://cookbook-app-backend.herokuapp.com/'
 const Stack = createStackNavigator()
 
 export default function LandingScreen({navigation}) {
 
-
+    let [fontsLoaded] = useFonts({
+        Pacifico_400Regular,
+    });
     const [ user, setUser] = useState({})
     const [ error, setError] = useState('')
     const [ loginForm, setLoginForm] = useState(false)
@@ -58,8 +65,8 @@ export default function LandingScreen({navigation}) {
             }
             })
         })
-            .then(response => response.json)
-            .then(user => setUser({ user }))  
+            .then(response => response.json())
+            .then(user => setUser( user ))  
     }
     
     const login = (username, password) => {
@@ -96,33 +103,80 @@ export default function LandingScreen({navigation}) {
     const handleSignUpForm = () => {
         setSignUpForm(true)
     }
-    return (
-        <>
-        {!user.username
-        ? !loginForm && !signUpForm 
-            ? <View>
-                <Button
-                    title='Sign up'
-                    onPress={handleSignUpForm}
-                />
-                <Button
-                    title='Login'
-                    onPress={handleLoginForm}
-                />
-            </View>
-            : null 
-            (<View>
-                    {loginForm
-                        ? <LoginForm login={login} user={user} error={error} />
-                        : null
-                    }
-                    {signUpForm
-                        ? <SignUpForm signUp={signUp} />
-                        : null 
-                    }   
-            </View>)
-        :  navigation.navigate('Home')
-        }  
-    </>     
-    )
+
+    const image = {uri: "https://i.pinimg.com/originals/9f/f6/e6/9ff6e60c4834e30f2be56ae3ab2c65c4.jpg"}
+    
+        if (!fontsLoaded) {
+            return <AppLoading />;
+        } else {
+        return (
+            <>
+            <ImageBackground source={image} style={styles.image} imageStyle={{opacity: 0.7}}>
+            {!user.username
+            ?!loginForm && !signUpForm 
+                ?  <View>
+                    <Text style={styles.title}>Savory Search</Text>
+                        <CustomButton
+                            style={styles.button}
+                            title='Sign up'
+                            onPress={handleSignUpForm}
+                        />
+                        <CustomButton
+                            style={styles.button}
+                            title='Login'
+                            onPress={handleLoginForm}
+                        />
+                    </View>
+                :  
+                    (<View>
+                            {loginForm
+                                ? <LoginForm style={styles.login} login={login} user={user} error={error} />
+                                : null
+                            }
+                            {signUpForm
+                                ? <SignUpForm style={styles.login} signUp={signUp} />
+                                : null 
+                            }   
+                    </View>)
+            :  navigation.navigate('Home')
+        } 
+        </ImageBackground>
+        </>     
+        )
+    }
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        marginBottom: 350,
+    },
+    title: {
+        fontSize: 60,
+        alignItems: 'center',
+        transform: [{
+        rotate: '-25deg'
+        }],
+        color: '#f0f5fc',
+        flexWrap: 'wrap',
+        paddingVertical: 6,
+        paddingHorizontal: 50,
+        margin: 50,
+        marginBottom: 70,
+        fontFamily: 'Pacifico_400Regular'
+    },
+    image: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center",
+        backgroundColor: 'rgba(140,171,217,0.7)' 
+    },
+    button: {
+
+    },
+    login: {
+        flex: 1
+    }
+
+
+})

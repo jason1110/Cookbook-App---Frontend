@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { Input } from 'react-native-elements'
+import CustomButton from '../shared/CustomButton'
 
 export default function LoginForm({login, error}) {
     
@@ -21,20 +22,22 @@ export default function LoginForm({login, error}) {
 
     
     return (
-    <View>
+    <View style={styles.container}>
         <Input 
-        label='Username' 
+        label='Username'
+        style={styles.inputForm}  
         value={username} 
         onChangeText={value => onChangeUser('username', value)} 
         />
         <Input 
-        label='Password' 
-        type='password' 
+        label='Password'
+        style={styles.inputForm}  
+        secureTextEntry={true} 
         value={password} 
         onChangeText={value => onChangePassword('password', value)} 
         />
         {error ? <p> {error} </p> : null}
-        <Button title='Login' 
+        <CustomButton title='Login' 
         value='login' 
         onPress={handleSubmit}
         />
@@ -43,12 +46,16 @@ export default function LoginForm({login, error}) {
 }
 
 
-            // <SearchBar
-            //     platform='android'
-            //     style={styles.textInput}
-            //     placeholder='search by ingredients'
-            //     searchIcon={false}
-            //     onChangeText={updateSearch}
-            //     onClear={handleClear}
-            //     value={ingredients}
-            //     />
+const styles = StyleSheet.create({
+    container: {
+    flex: 0,
+    backgroundColor: '#f0f5fc',
+    opacity: 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+    },
+    inputForm:{
+        color: 'black'
+    }
+});

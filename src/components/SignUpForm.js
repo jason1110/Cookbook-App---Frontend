@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { Input } from 'react-native-elements'
+import CustomButton from '../shared/CustomButton'
 
 export default class SignUpForm extends Component {
     
@@ -26,7 +27,7 @@ export default class SignUpForm extends Component {
     render(){
         return(
         <View style={styles.container}>   
-        <Text> Sign Up to create your own Cookbook! </Text>
+        
                 <Input 
                 style={styles.inputForm} 
                 label='First name'  
@@ -52,7 +53,7 @@ export default class SignUpForm extends Component {
                 value={this.state.password} 
                 onChangeText={ value => this.onChangeText('password', value) }
                 />
-                <Button 
+                <CustomButton 
                 title='Sign Up' 
                 value='signUp' 
                 onPress={this.handleSubmit}
@@ -65,9 +66,14 @@ export default class SignUpForm extends Component {
 
 const styles = StyleSheet.create({
     container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flex: 0,
+    backgroundColor: '#f0f5fc',
+    opacity: 0.9,
     alignItems: 'center',
     justifyContent: 'center',
+    color: 'white'
+    },
+    inputForm:{
+        color: 'black'
     }
 });
