@@ -1,27 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, 
         Text, 
-        View, 
-        // Button, 
-        Alert, 
-        TextInput, 
-        ScrollView,  
+        View,  
         Linking,
-        Image, 
-        ActivityIndicator,
-        defaultSource,
-        FlatList,
-        SafeAreaView
+        SafeAreaView,
+        TouchableOpacity
         } 
         from 'react-native';
-import { SearchBar } from 'react-native-elements'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
-import Constants from 'expo-constants';
-import styled from 'styled-components'
 
 import AddToCookbookButton from './AddToCookbookButton'
-// import Card from '../shared/Card'
 
 export default function searchResults({recipe}) {
 
@@ -30,20 +18,17 @@ export default function searchResults({recipe}) {
         ? recipe.thumbnail
         : 'https://static.thenounproject.com/png/778815-200.png'
     }
-
+    
     return (
-       <SafeAreaView style={styles.container}>
-           <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            <View style={styles.container}>
                     < Card containerStyle={styles.card}>
+                        <TouchableOpacity onPress={ () => Linking.openURL(recipe.href)}>
                         <Card.Image  source={{ uri: hasImage()}} style={styles.image}/>
                         <Card.Title style={styles.title}>{recipe.title}</Card.Title>
+                        </TouchableOpacity>
                         <Card.Divider style={styles.divider}/>
                         <Text style={styles.paragraph} >{recipe.ingredients}</Text>
-                        <Text 
-                            style={{color: 'blue', marginBottom: 10}}
-                            onPress={ () => Linking.openURL(recipe.href)}
-                            >Recipe website
-                        </Text>
                         <AddToCookbookButton recipe={recipe}/>
                     </Card>  
             </View> 
@@ -69,6 +54,8 @@ const styles = StyleSheet.create({
     card: {
         width: 300,
         height: 350,
+        borderRadius: 9,
+        elevation: 8
     },
     image: {
         margin: 0,
@@ -79,5 +66,4 @@ const styles = StyleSheet.create({
         maxHeight: 50,
         fontSize: 20,
     }
-
 })

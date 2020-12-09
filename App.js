@@ -12,23 +12,66 @@ library.add(fab, faCheckSquare, faCoffee, faSearch)
 
 import HomeScreen from './src/screens/HomeScreen'
 import SearchScreen from './src/screens/SearchScreen'
-import SearchResultsScreen from './src/screens/SearchResultsScreen'
-import NewUserScreen from './src/screens/NewUserScreen'
-import LoginScreen from './src/screens/LoginScreen'
+import CookbookScreen from './src/screens/CookbookScreen'
+import LandingScreen from './src/screens/LandingScreen'
 
 
 const Stack = createStackNavigator()
 
 export default function App() {
-
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Search" component={SearchScreen} />
-        <Stack.Screen name="SearchResults" component={SearchResultsScreen} />
-        <Stack.Screen name="SignUp" component={NewUserScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Navigator initialRouteName="Landing">
+      <Stack.Screen 
+      name="Landing" 
+      component={LandingScreen}
+      options={{
+        headerShown: false,
+      }}
+       />
+        <Stack.Screen 
+        name="Home" 
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+          headerStyle: {
+            backgroundColor: '#598b9e'
+          },
+          headerTintColor: '#f0f5fc',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontWeight: 'bold'
+          }
+        }}
+        />
+        <Stack.Screen 
+        name="Search" 
+        component={SearchScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: '#598b9e'
+          },
+          headerTintColor: '#f0f5fc',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontWeight: 'bold'
+          }
+        }} 
+        />
+        <Stack.Screen 
+        name="Cookbook" 
+        component={CookbookScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: '#598b9e'
+          },
+          headerTintColor: '#f0f5fc',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontWeight: 'bold'
+          }
+        }} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -43,3 +86,13 @@ export default function App() {
     }
   });
   
+
+
+  // import SearchResultsScreen from './src/screens/SearchResultsScreen'
+  // import NewUserScreen from './src/screens/NewUserScreen'
+  // import LoginScreen from './src/screens/LoginScreen'
+  
+       
+        // <Stack.Screen name="SearchResults" component={SearchResultsScreen} />
+        // <Stack.Screen name="SignUp" component={NewUserScreen} />
+        // <Stack.Screen name="Login" component={LoginScreen} /> */

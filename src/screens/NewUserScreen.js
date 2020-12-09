@@ -3,13 +3,16 @@ import { StyleSheet, Text, View, Button, Alert, SafeAreaView, FlatList, TextInpu
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import SignUpForm from '../components/SignUpForm';
 
-export default function NewUserScreen() {
+export default function NewUserScreen({navigation}) {
     return (
         <View>
-            <Text>
-                Hello
-            </Text>
+            <Text>create account</Text>
+            <Button
+                title='Go Back'
+                onPress={navigation.navigate('Landing')}
+            />
         </View>
     )
 }

@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button, Alert, SafeAreaView, FlatList, TextInput, ScrollView } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import SearchResults from '../components/SearchResults'
-import Card from '../shared/Card'
 
 export default function SearchResultsScreen({recipes}) {
 
