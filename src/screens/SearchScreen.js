@@ -1,7 +1,7 @@
 
-console.disableYellowBox = true;
+LogBox.ignoreAllLogs()
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Alert, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, Alert, ImageBackground, LogBox} from 'react-native';
 import { SearchBar, Button } from 'react-native-elements'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -29,7 +29,7 @@ export default function SearchScreen({navigation}) {
             fetch(`https://recipe-puppy.p.rapidapi.com/?p=${pageNumber}&i=${search}`, {
                 "method": "GET",
                 "headers": {
-                    "x-rapidapi-key": "05911679f7mshac9281d6ec76c1ap1e246ejsnccbf9e7e5f2f",
+                    "x-rapidapi-key": `${APIKey}`,
                     "x-rapidapi-host": "recipe-puppy.p.rapidapi.com"
                 }
             })

@@ -1,6 +1,6 @@
-console.disableYellowBox = true;
+LogBox.ignoreAllLogs()
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, Text, ImageBackground} from 'react-native';
+import { View, StyleSheet, Text, ImageBackground, LogBox} from 'react-native';
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
