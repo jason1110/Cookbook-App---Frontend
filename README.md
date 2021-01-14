@@ -44,7 +44,7 @@ in the search results, you can click on a recipe card ot be taken to the recipe 
     
 ## Resources
 
-Recipe search engine powered by www.recipepuppy.com
+Recipe search engine api powered by www.recipepuppy.com
 
 ## Contact
 
