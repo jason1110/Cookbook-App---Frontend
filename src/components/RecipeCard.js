@@ -21,7 +21,7 @@ export default function RecipeCard({favorite}) {
                         >
                         <Avatar source={{ uri: favorite.thumbnail}} size='large' rounded/>
                         <ListItem.Content style={styles.content}>
-                            <ListItem.Title style={styles.title}>{favorite.title}</ListItem.Title>
+                        <ListItem.Title style={styles.title}>{favorite.title}</ListItem.Title>
                         </ListItem.Content>
                     </ListItem>
                 </TouchableOpacity>

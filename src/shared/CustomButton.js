@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Button, StyleSheet, TouchableOpacity, Text } from "react-native"
+import { StyleSheet, TouchableOpacity, Text } from "react-native"
 TouchableOpacity.defaultProps = { activeOpacity: 0.8 }
 import {LinearGradient} from "expo-linear-gradient"
 
@@ -14,7 +14,7 @@ export default function CustomButton({onPress, title}) {
                 colors={['#7ec4df', '#598b9e', '#20363e']}
                 style={styles.buttonGradientContainer}
             >
-                <Text style={styles.buttonText}>{title}</Text>
+            <Text style={styles.buttonText}>{title}</Text>
             </LinearGradient>
         </TouchableOpacity>
     )

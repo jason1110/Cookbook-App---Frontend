@@ -3,8 +3,6 @@ LogBox.ignoreAllLogs()
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Alert, ImageBackground, LogBox} from 'react-native';
 import { SearchBar, Button } from 'react-native-elements'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import {LinearGradient} from "expo-linear-gradient"
 import {REACT_APP_API_KEY} from 'react-native-dotenv'
 

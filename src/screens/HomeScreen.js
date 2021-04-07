@@ -2,12 +2,8 @@ LogBox.ignoreAllLogs()
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ImageBackground, LogBox} from 'react-native';
 import 'react-native-gesture-handler'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import * as Font from 'expo-font'
 import { useFonts, Pacifico_400Regular } from '@expo-google-fonts/pacifico'
 import CustomButton from '../shared/CustomButton'
-import  { LinearGradient } from "expo-linear-gradient"
 
 import { AppLoading } from 'expo';
 

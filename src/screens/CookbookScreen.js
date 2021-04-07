@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import 'react-native-gesture-handler'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import RecipeCard from '../components/RecipeCard'
 const baseURL = 'https://cookbook-app-backend.herokuapp.com/'
 

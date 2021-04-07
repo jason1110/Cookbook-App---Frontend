@@ -2,14 +2,10 @@ LogBox.ignoreAllLogs()
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Text, ImageBackground, LogBox} from 'react-native';
 import 'react-native-gesture-handler'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import SignUpForm from '../components/SignUpForm';
 import LoginForm from '../components/LoginForm';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import CustomButton from '../shared/CustomButton'
-import HomeScreen from './HomeScreen'
-import * as Font from 'expo-font'
 import { useFonts, Pacifico_400Regular } from '@expo-google-fonts/pacifico'
 import { AppLoading } from 'expo';
 
